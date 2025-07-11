@@ -83,6 +83,21 @@
 <body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-4">
     <div class="text-center mb-8">
         <h1 class="text-4xl font-bold mb-2 text-purple-400">Jogo da Memória Afroworld</h1>
+
+        <!-- Adsterra Banner 728x90 -->
+        <div style="width:728px;height:90px;margin:20px auto;">
+            <script type="text/javascript">
+            	atOptions = {
+            		'key' : '1ddece20964706f9a01ecae25c6f5df3',
+            		'format' : 'iframe',
+            		'height' : 90,
+            		'width' : 728,
+            		'params' : {}
+            	};
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/1ddece20964706f9a01ecae25c6f5df3/invoke.js"></script>
+        </div>
+
         <p class="text-lg text-gray-300">Encontre todos os pares para vencer!</p>
         <div class="mt-4 flex justify-center items-center gap-4">
             <div class="bg-purple-800 px-4 py-2 rounded-lg">
@@ -113,7 +128,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Game configuration
             const cardImages = [
                 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop',
                 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop',
@@ -127,14 +141,12 @@
                 'https://images.unsplash.com/photo-1535463731090-e34f7b069c9d?w=500&auto=format&fit=crop'
             ];
             
-            // Game state
             let cards = [];
             let flippedCards = [];
             let matchedPairs = 0;
             let attempts = 0;
             let canFlip = true;
             
-            // DOM elements
             const gameBoard = document.getElementById('game-board');
             const attemptsDisplay = document.getElementById('attempts');
             const restartBtn = document.getElementById('restart-btn');
@@ -142,36 +154,26 @@
             const finalAttemptsDisplay = document.getElementById('final-attempts');
             const playAgainBtn = document.getElementById('play-again-btn');
             
-            // Initialize game
             initGame();
             
-            // Event listeners
             restartBtn.addEventListener('click', initGame);
             playAgainBtn.addEventListener('click', () => {
                 winModal.classList.add('hidden');
                 initGame();
             });
             
-            // Game functions
             function initGame() {
-                // Reset game state
                 cards = [];
                 flippedCards = [];
                 matchedPairs = 0;
                 attempts = 0;
                 canFlip = true;
                 attemptsDisplay.textContent = attempts;
-                
-                // Clear game board
                 gameBoard.innerHTML = '';
                 
-                // Create pairs of cards
                 const cardPairs = [...cardImages, ...cardImages];
-                
-                // Shuffle cards
                 shuffleArray(cardPairs);
                 
-                // Create card elements
                 cardPairs.forEach((imageUrl, index) => {
                     const card = document.createElement('div');
                     card.className = 'card aspect-square bg-purple-600 rounded-lg cursor-pointer hover:shadow-lg hover:shadow-purple-500/50 transition';
@@ -201,21 +203,17 @@
             
             function flipCard() {
                 if (!canFlip) return;
-                
                 const index = parseInt(this.dataset.index);
                 const card = cards[index];
                 
-                // Don't allow flipping already matched or flipped cards
                 if (card.isMatched || card.isFlipped || flippedCards.length >= 2) {
                     return;
                 }
                 
-                // Flip the card
                 this.classList.add('flipped');
                 card.isFlipped = true;
                 flippedCards.push({ index, element: this });
                 
-                // Check for match when two cards are flipped
                 if (flippedCards.length === 2) {
                     attempts++;
                     attemptsDisplay.textContent = attempts;
@@ -229,24 +227,17 @@
                 const cardData2 = cards[card2.index];
                 
                 if (cardData1.imageUrl === cardData2.imageUrl) {
-                    // Match found
                     cardData1.isMatched = true;
                     cardData2.isMatched = true;
                     matchedPairs++;
-                    
-                    // Add matched class for visual feedback
                     card1.element.classList.add('matched');
                     card2.element.classList.add('matched');
-                    
-                    // Clear flipped cards
                     flippedCards = [];
                     
-                    // Check for win
                     if (matchedPairs === cardImages.length) {
                         setTimeout(showWinScreen, 500);
                     }
                 } else {
-                    // No match
                     canFlip = false;
                     setTimeout(() => {
                         card1.element.classList.remove('flipped');
@@ -267,7 +258,6 @@
             
             function createConfetti() {
                 const colors = ['#f00', '#0f0', '#00f', '#ff0', '#f0f', '#0ff'];
-                
                 for (let i = 0; i < 100; i++) {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
@@ -276,17 +266,13 @@
                     confetti.style.animationDelay = Math.random() * 3 + 's';
                     confetti.style.width = Math.random() * 10 + 5 + 'px';
                     confetti.style.height = Math.random() * 10 + 5 + 'px';
-                    
                     document.body.appendChild(confetti);
-                    
-                    // Remove confetti after animation
                     setTimeout(() => {
                         confetti.remove();
                     }, 3000);
                 }
             }
             
-            // Utility function to shuffle array
             function shuffleArray(array) {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -296,5 +282,12 @@
             }
         });
     </script>
+
+    <!-- Adsterra Banner via container (Rodapé) -->
+    <div style="margin:20px auto;">
+        <script async="async" data-cfasync="false" src="//pl26620440.profitableratecpm.com/7044f574741a3f0d09663ed8ff17af73/invoke.js"></script>
+        <div id="container-7044f574741a3f0d09663ed8ff17af73"></div>
+    </div>
+
 </body>
 </html>
